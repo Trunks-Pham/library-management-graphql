@@ -1,0 +1,42 @@
+mutation {
+  addAuthor(
+    name: "J.K. Rowling",
+    age: 56,
+    nationality: "British",
+    biography: "Author of the Harry Potter series.",
+    website: "https://www.jkrowling.com/",
+    email: "jkrowling@example.com",
+    phone: "+44 1234567890",
+    awards: ["Order of the British Empire (OBE)"],
+    socialMediaHandles: {
+      twitter: "jk_rowling",
+      facebook: "jkrowling",
+      instagram: "jk_rowling"
+    }
+  ) {
+    id
+    name
+  }
+}
+
+
+===========
+
+
+mutation {
+  addBook(
+    title: "Harry Potter and the Philosopher's Stone",
+    genre: "Fantasy",
+    pages: 320,
+    publishedDate: "1997-06-26",
+    author: "ID_OF_JK_ROWLING", // Replace with actual author ID
+    summary: "The first book in the Harry Potter series.",
+    language: "English",
+    ISBN: "9780747532743",
+    publisher: "Bloomsbury Publishing",
+    reviews: []
+  ) {
+    id
+    title
+  }
+}
