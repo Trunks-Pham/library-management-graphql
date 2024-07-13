@@ -1,0 +1,226 @@
+Lấy danh sách tất cả các sách:
+query {
+  books {
+    _id
+    title
+    genre
+    pages
+    publishedDate
+    author {
+      _id
+      name
+      age
+      nationality
+      biography
+      website
+      email
+      phone
+      awards
+      socialMediaHandles {
+        twitter
+        facebook
+        instagram
+      }
+    }
+    summary
+    language
+    ISBN
+    publisher
+    reviews {
+      reviewer
+      content
+      rating
+    }
+  }
+}
+
+Lấy thông tin của một sách cụ thể theo ID:
+query {
+  book(id: "book_id_here") {
+    _id
+    title
+    genre
+    pages
+    publishedDate
+    author {
+      _id
+      name
+      age
+      nationality
+      biography
+      website
+      email
+      phone
+      awards
+      socialMediaHandles {
+        twitter
+        facebook
+        instagram
+      }
+    }
+    summary
+    language
+    ISBN
+    publisher
+    reviews {
+      reviewer
+      content
+      rating
+    }
+  }
+}
+
+Thêm một sách mới:
+mutation {
+  addBook(
+    title: "Tên sách",
+    genre: "Thể loại",
+    pages: 300,
+    publishedDate: "2023-01-01",
+    author: "author_id_here",
+    summary: "Tóm tắt nội dung sách",
+    language: "Ngôn ngữ",
+    ISBN: "1234567890",
+    publisher: "Nhà xuất bản ABC",
+    reviews: [
+      {
+        reviewer: "Người đánh giá 1",
+        content: "Nội dung đánh giá 1",
+        rating: 4
+      },
+      {
+        reviewer: "Người đánh giá 2",
+        content: "Nội dung đánh giá 2",
+        rating: 5
+      }
+    ]
+  ) {
+    _id
+    title
+    genre
+    pages
+    publishedDate
+    author {
+      _id
+      name
+      age
+      nationality
+      biography
+      website
+      email
+      phone
+      awards
+      socialMediaHandles {
+        twitter
+        facebook
+        instagram
+      }
+    }
+    summary
+    language
+    ISBN
+    publisher
+    reviews {
+      reviewer
+      content
+      rating
+    }
+  }
+}
+
+
+Cập nhật thông tin của một sách:
+mutation {
+  updateBook(
+    _id: "book_id_here",
+    title: "Tên sách mới",
+    genre: "Thể loại mới",
+    pages: 350,
+    publishedDate: "2024-01-01",
+    author: "new_author_id_here",
+    summary: "Tóm tắt nội dung sách được cập nhật",
+    language: "Ngôn ngữ mới",
+    ISBN: "0987654321",
+    publisher: "Nhà xuất bản XYZ",
+    reviews: [
+      {
+        reviewer: "Người đánh giá 1 (cập nhật)",
+        content: "Nội dung đánh giá 1 (cập nhật)",
+        rating: 5
+      },
+      {
+        reviewer: "Người đánh giá 2 (cập nhật)",
+        content: "Nội dung đánh giá 2 (cập nhật)",
+        rating: 4
+      }
+    ]
+  ) {
+    _id
+    title
+    genre
+    pages
+    publishedDate
+    author {
+      _id
+      name
+      age
+      nationality
+      biography
+      website
+      email
+      phone
+      awards
+      socialMediaHandles {
+        twitter
+        facebook
+        instagram
+      }
+    }
+    summary
+    language
+    ISBN
+    publisher
+    reviews {
+      reviewer
+      content
+      rating
+    }
+  }
+}
+
+
+Xóa một sách:
+mutation {
+  deleteBook(id: "book_id_here") {
+    _id
+    title
+    genre
+    pages
+    publishedDate
+    author {
+      _id
+      name
+      age
+      nationality
+      biography
+      website
+      email
+      phone
+      awards
+      socialMediaHandles {
+        twitter
+        facebook
+        instagram
+      }
+    }
+    summary
+    language
+    ISBN
+    publisher
+    reviews {
+      reviewer
+      content
+      rating
+    }
+  }
+}

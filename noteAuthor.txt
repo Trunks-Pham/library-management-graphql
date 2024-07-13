@@ -1,0 +1,160 @@
+LẤY DANH SÁCH TÁC GIẢ
+query {
+  authors {
+    _id
+    name
+    age
+    nationality
+    books {
+      _id
+      title
+      genre
+      pages
+      publishedDate
+      summary
+      language
+      ISBN
+      publisher
+      reviews {
+        reviewer
+        content
+        rating
+      }
+    }
+    biography
+    website
+    email
+    phone
+    awards
+    socialMediaHandles {
+      twitter
+      facebook
+      instagram
+    }
+  }
+}
+
+Lấy thông tin của một tác giả cụ thể theo ID:
+query {
+  author(id: "author_id_here") {
+    _id
+    name
+    age
+    nationality
+    books {
+      _id
+      title
+      genre
+      pages
+      publishedDate
+      summary
+      language
+      ISBN
+      publisher
+      reviews {
+        reviewer
+        content
+        rating
+      }
+    }
+    biography
+    website
+    email
+    phone
+    awards
+    socialMediaHandles {
+      twitter
+      facebook
+      instagram
+    }
+  }
+}
+
+Thêm một tác giả mới:
+mutation {
+  addAuthor(
+    name: "Tên tác giả",
+    age: 35,
+    nationality: "Quốc tịch",
+    biography: "Tiểu sử tác giả",
+    website: "https://website.com",
+    email: "author@email.com",
+    phone: "+1234567890",
+    awards: "Giải thưởng tác giả xuất sắc",
+    socialMediaHandles: {
+      twitter: "tacgia_twitter",
+      facebook: "tacgia_facebook",
+      instagram: "tacgia_instagram"
+    }
+  ) {
+    _id
+    name
+    age
+    nationality
+    biography
+    website
+    email
+    phone
+    awards
+    socialMediaHandles {
+      twitter
+      facebook
+      instagram
+    }
+  }
+}
+
+Cập nhật thông tin của một tác giả:
+mutation {
+  updateAuthor(
+    _id: "author_id_here",
+    name: "Tên tác giả mới",
+    age: 40,
+    nationality: "Quốc tịch mới",
+    biography: "Tiểu sử tác giả được cập nhật",
+    website: "https://new_website.com",
+    email: "new_author@email.com",
+    phone: "+9876543210",
+    awards: "Giải thưởng tác giả xuất sắc (cập nhật)",
+    socialMediaHandles: {
+      twitter: "new_tacgia_twitter",
+      facebook: "new_tacgia_facebook",
+      instagram: "new_tacgia_instagram"
+    }
+  ) {
+    _id
+    name
+    age
+    nationality
+    biography
+    website
+    email
+    phone
+    awards
+    socialMediaHandles {
+      twitter
+      facebook
+      instagram
+    }
+  }
+}
+
+Xóa một tác giả và các sách liên quan:
+mutation {
+  deleteAuthor(id: "author_id_here") {
+    _id
+    name
+    age
+    nationality
+    biography
+    website
+    email
+    phone
+    awards
+    socialMediaHandles {
+      twitter
+      facebook
+      instagram
+    }
+  }
+}

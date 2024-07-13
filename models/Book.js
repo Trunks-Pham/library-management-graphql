@@ -5,7 +5,7 @@ const bookSchema = new mongoose.Schema({
   genre: String,
   pages: Number,
   publishedDate: Date,
-  author: String, // Author ID
+  author: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Author' }],
   summary: String,
   language: String,
   ISBN: String,
@@ -15,6 +15,7 @@ const bookSchema = new mongoose.Schema({
     content: String,
     rating: Number
   }]
+  
 });
 
 module.exports = mongoose.model('Book', bookSchema);

@@ -2,16 +2,16 @@ const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
   type Author {
-    id: ID!
+    _id: ID!
     name: String!
     age: Int
     nationality: String
-    books: [String]
+    books: [Book]  # Changed to array of Book type
     biography: String
     website: String
     email: String
     phone: String
-    awards: [String]
+    awards: String
     socialMediaHandles: SocialMediaHandles
   }
 
@@ -22,12 +22,12 @@ const typeDefs = gql`
   }
 
   type Book {
-    id: ID!
+    _id: ID!
     title: String!
     genre: String
     pages: Int
     publishedDate: String
-    author: String
+    author: Author  # Changed to single Author type
     summary: String
     language: String
     ISBN: String
@@ -42,9 +42,9 @@ const typeDefs = gql`
   }
 
   type Query {
-    authors: [Author]
+    authors: [Author]  # Changed to array of Author type
     author(id: ID!): Author
-    books: [Book]
+    books: [Book]  # Changed to array of Book type
     book(id: ID!): Book
   }
 
@@ -53,27 +53,57 @@ const typeDefs = gql`
       name: String!,
       age: Int,
       nationality: String,
-      books: [String],
       biography: String,
       website: String,
       email: String,
       phone: String,
-      awards: [String],
+      awards: String,
       socialMediaHandles: SocialMediaInput
     ): Author
+
+    updateAuthor(
+      _id: ID!,
+      name: String,
+      age: Int,
+      nationality: String,
+      biography: String,
+      website: String,
+      email: String,
+      phone: String,
+      awards: String,
+      socialMediaHandles: SocialMediaInput
+    ): Author
+
+    deleteAuthor(id: ID!): Author
 
     addBook(
       title: String!,
       genre: String,
       pages: Int,
       publishedDate: String,
-      author: String,
+      author: ID,
       summary: String,
       language: String,
       ISBN: String,
       publisher: String,
       reviews: [ReviewInput]
     ): Book
+
+    updateBook(
+      _id: ID!,
+      title: String,
+      genre: String,
+      pages: Int,
+      publishedDate: String,
+      author: ID,
+      summary: String,
+      language: String,
+      ISBN: String,
+      publisher: String,
+      reviews: [ReviewInput]
+    ): Book
+
+    deleteBook(id: ID!): Book
   }
 
   input SocialMediaInput {

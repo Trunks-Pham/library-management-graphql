@@ -4,12 +4,12 @@ const authorSchema = new mongoose.Schema({
   name: String,
   age: Number,
   nationality: String,
-  books: [String], // Array of book IDs
+  books: String,
   biography: String,
   website: String,
   email: String,
   phone: String,
-  awards: [String],
+  awards: String,
   socialMediaHandles: {
     twitter: String,
     facebook: String,
